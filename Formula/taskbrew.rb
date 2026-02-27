@@ -10,10 +10,12 @@ class Taskbrew < Formula
   depends_on "python@3.12"
 
   def install
-    virtualenv_install_with_resources
+    virtualenv_create(libexec, "python3.12")
+    system libexec/"bin/pip", "install", "taskbrew==#{version}"
+    bin.install_symlink Dir[libexec/"bin/taskbrew"]
   end
 
   test do
-    assert_match "TaskBrew", shell_output("#{bin}/taskbrew --help 2>&1", 0)
+    assert_match "taskbrew", shell_output("#{bin}/taskbrew --help 2>&1")
   end
 end
