@@ -7,7 +7,9 @@ class Taskbrew < Formula
   sha256 "98d08d1576e988b62149a731add06c20c7ae255f04953a6a302fb3efb886fa62"
   license "MIT"
 
+  depends_on "openssl@3"
   depends_on "python@3.12"
+  depends_on "rust" => :build
 
   resource "aiosqlite" do
     url "https://files.pythonhosted.org/packages/4e/8a/64761f4005f17809769d23e518d915db74e6310474e733e3593cfc854ef1/aiosqlite-0.22.1.tar.gz"
